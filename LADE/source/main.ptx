@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<pretext xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <!-- we first include a file which contains the docinfo element: -->
+  <xi:include href="./docinfo.ptx" />
+
+  <book xml:id="my-great-book">
+    <title>Linear Algebra and Differential Equations</title>
+    <subtitle></subtitle>
+
+    <!-- Include frontmatter -->
+    <xi:include href="./frontmatter.ptx" />
+
+    <!-- Include chapters -->
+    <xi:include href="./ch-chapter-title.ptx" />
+    <chapter>
+      <title>Introduction to Differential Equations</title>
+      <section>
+        <title>Mathematical Modeling</title>
+        <p>
+          Differential equations (DEs) are used to mathematically model physical situations. The first example of using a differential equation to model real world situations is Newton's 2nd Law.
+          <md>
+            {\bf F}=m{\bf a}=m\frac{d^2{\bf r}}{dt^2}
+          </md>
+          Some other examples of differential equation models that you are probably familiar with.
+          <p>
+          <alert>Radioactive decay :</alert> The rate of decay of a radioactive substance is proportional to the amount of the substance.
+          <md>
+            \frac{dA}{dt}=-kA
+          </md>
+          with solution
+          <md>
+            A(t)=A(0)e^{-kt}
+          </md>
+          </p>
+          <p>
+          <alert>Projectiles :</alert> Motion of a particle under constant gravitational acceleration downwards
+          <md>
+            {\bf r}''=-g{\bf j}
+          </md>
+          with solution
+          <md>
+            {\bf r}={\bf r}(0)+{\bf v}(0)t-\frac{1}{2}gt^2{\bf j}
+          </md>
+          </p>
+          <p>
+          <alert>Newton's Law of Cooling :</alert> The rate of change of the temperature of an object is proportional to the difference between its temperature and the temperature of its surroundings.
+          <md>
+            \frac{dT}{dt}=-k(T-T_s)
+          </md>
+          with solution
+          <md>
+            T(t)=T_s+ce^{-kt}
+          </md>
+          </p>
+          <p>
+          <alert>Population :</alert> The rate of change of a population is proportional to the population.
+          <md>
+            \frac{dp}{dt}=rP
+          </md>
+          with solution
+          <md>
+            p(t)=p(0)e^{kt}
+          </md>
+          </p>
+          <p>
+          <alert> Logistic Population Model :</alert>
+          <md>
+            \frac{dp}{dt}=rp\left(1-\frac{p}{m}\right)
+          </md>
+          with solution
+          <md>
+            p(t)=\frac{m}{1+ce^{-rt}}
+          </md>
+          </p>
+          
+        </p>
+        
+      </section>
+      <section>
+        <title>Ordinary Differential equations</title>
+        <p>
+          An ordinary differential equation consists of a real dependent variable, a real independent variable, and derivatives of the dependent variable with respect to the independent variable. It can be expressed in the implicit form.
+          <md>
+            f(t,y,y',\cdots,y^{(n)}=0
+          </md>
+          where <m>y</m> is the dependent variable and <m>t</m> is the independent variable. The normal form is obtained by solving for the highest derivative (if possible).
+          <md>
+            y{(n)}=g(t,y,y',\cdots,y^{(n-1)})
+          </md>
+          <p>
+            The order of a differential equation is the order of the highest derivative. The examples in the previous section were all first order except the projectile example.
+          </p>
+          <p>
+            A differential equation is linear if it is a linear function of the dependent variable and its derivatives. Otherwise it is nonlinear. All of the examples in the previous section are linear except for the Logistic model.
+          </p>
+          <p>
+            A differential equation is autonomous if the independent variable doesn't appear explicitly in the equation. All of the examples in the previous section are autonomous.
+          </p>
+        </p>
+        <p>
+          Here are some more complicated differential equation models
+          <p>
+            <alert>The Van der Pol equation :</alert> It describes the current in a certain type of electrical circuit.
+            <md>
+              \frac{d^2i}{dt^2}-\mu(1-i^2)\frac{di}{dt}+i=0
+            </md>
+            The dependent variable is <m>i</m> and the independent variable is <m>t</m>. It is second order, nonlinear, and autonomous
+          </p>
+          <p>
+            <alert>The Euler-Bernoulli equation :</alert> It describes the the deflection of a beam
+            <md>
+              \frac{d^2}{dx^2}\left(\EI\frac{d^2y}{dx^2}\right)=q(x)
+            </md>
+            
+          </p>
+        </p>
+        
+      </section>
+      
+    </chapter>
+
+
+    <!-- Include backmatter -->
+    <xi:include href="./backmatter.ptx" />
+
+  </book>
+</pretext>
