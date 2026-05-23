@@ -11,9 +11,7 @@
     <!-- Include frontmatter -->
     <xi:include href="./frontmatter.ptx" />
 
-    <!-- Include chapters -->
-    <xi:include href="./ch-chapter-title.ptx" />
-    <chapter>
+        <chapter>
       <title>Introduction to Differential Equations</title>
       <section>
         <title>Mathematical Modeling</title>
@@ -110,17 +108,107 @@
           <p>
             <alert>The Euler-Bernoulli equation :</alert> It describes the the deflection of a beam
             <md>
-              \frac{d^2}{dx^2}\left(\EI\frac{d^2y}{dx^2}\right)=q(x)
+              \frac{d^2}{dx^2}\left(EI\frac{d^2y}{dx^2}\right)=q(x)
             </md>
-            
+            The dependent variable is <m>y</m> the independent variable is <m>x</m>. It is fourth order, linear and it isn't autonomous
+          </p>
+          <p>
+            <alert>The Schrodinger equation for the hydrogen atom</alert>
+            <md>
+              \frac{1}{r^2}\frac{d}{dr}\left(r^2\frac{d\psi}{dr}\right)+\left(E+\frac{k}{r}\right)\psi=0
+            </md>
+            The dependent variable is <m>\psi</m> and the independent variable is <m>r</m>. It is second order, linear and not autonomous,
+          </p>
+          <p>
+            <alert>The Blasius equation</alert> It describes boundary layer flow of a fluid over a flat plate.
+            <md>
+              f'''+\frac{1}{2}f\,f''=0'
+            </md>
+            The dependent variable is <m>f</m>, the independent variable isn't given explicitly. The equation is third order, nonlinear, and autonomous
           </p>
         </p>
         
       </section>
+      <section xml:id="sec-Solutions">
+        <title>Solutions</title>
+        <p>
+          An analytic or closed form solution to a differential equation is an expression relating the dependent and independent variables without derivatives, which when differentiated makes the differential equation an identity. Solutions can given in explicit form <m>y=f(t)</m> or in implicit form <m>g(y,t)=\text{constant}</m>
+        </p>
+        <subsection>
+          <title>Analytic solutions in explicit form</title>
+          <p>
+            If the differential equation is
+            <md>
+              y'=f(t,y)
+            </md>
+            then an explicit solution <m>y=g(t)</m> of the equation makes
+            <md>
+              g'(t)=f(t,g(t))
+            </md>
+            an identity
+          </p>
+          <example>
+            <statement>
+              <p>
+                The differential equation
+                <md>
+                  y'=-\frac{3}{t}\,y+6t^2
+                </md>
+                has a solution <m>y=t^3</m> since
+                <md>
+                  (t^3)'=-\frac{3t^3}{t}+6t^2 \quad\Rightarrow\quad 3t^2=-3t^2+6t^2
+                </md>
+                So it satisfies the equation. <m>y=t^3</m> is called a particular solution. The general solution to the equation is
+                <md>
+                  y=t^3+\frac{c}{t^3}
+                </md>
+                where <m>c</m> is an arbitrary constant analogous to the <m>+C</m> when finding antiderivatives
+              </p>
+            </statement>
+          </example>
+        </subsection>
+        <subsection>
+          <title>Analytic solutions in implicit form</title>
+          <p>
+            To check whether an implicit function <m>g(t,y)=\text{constant}</m> satisfies a differential equation
+            <md>
+              y'=f(t,y)
+            </md>
+            we have to implicitly differentiate the function and solve for <m>y'</m>
+            <md>
+              \frac{d}{dt}(g(t,y))=\partial_t g +\partial_y g\, y'=0 \quad\Rightarrow\quad y'=-\frac{g_t}{g_y}
+            </md>
+            <m>g_t,g_y</m> are the partial derivatives of g, that they are the usual derivatives with respect to thevariable while considering all the other variables to be constant. The function will be a solution to the equation if
+            <md>
+              -\frac{g_t}{g_y}=f(t,y)
+            </md>
+            
+          </p>
+          <example>
+            <p>
+              A closed form solution to the differential equation
+              <md>
+                y'=-\frac{\cos y+2ty}{-t\sin y+t^2+3y^2}
+              </md>
+              is given by <m>g(t,y)=t\cos y+t^2y+y^3=c</m> since
+              <md>
+                \partial_t g=\cos y+2ty\qquad \partial_y g=-t\sin y+t^2+3y^2
+              </md>
+              and
+              <md>
+                -\frac{g_t}{g_y}=-\frac{\cos y+2ty}{-t\sin y+t^2+3y^2}=f(t,y)
+              </md>
+              
+            </p>
+          </example>
+        </subsection>
+      </section>
+      
       
     </chapter>
 
-
+   
+   
     <!-- Include backmatter -->
     <xi:include href="./backmatter.ptx" />
 
