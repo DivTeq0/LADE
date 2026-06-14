@@ -178,7 +178,7 @@
             <md>
               \frac{d}{dt}(g(t,y))=\partial_t g +\partial_y g\, y'=0 \quad\Rightarrow\quad y'=-\frac{g_t}{g_y}
             </md>
-            <m>g_t,g_y</m> are the partial derivatives of g, that they are the usual derivatives with respect to thevariable while considering all the other variables to be constant. The function will be a solution to the equation if
+            <m>g_t,g_y</m> are the partial derivatives of g, that is they are the usual derivatives with respect to the variable while considering all the other variables to be constant. The function will be a solution to the equation if
             <md>
               -\frac{g_t}{g_y}=f(t,y)
             </md>
@@ -202,6 +202,162 @@
             </p>
           </example>
         </subsection>
+      </section>
+      <section>
+        <title>Initial Value Problems</title>
+        <p>
+          In applications of differential equations we are usually interested in finding solutions that satisfy another requirement called an initial condition. This has the effect of fixing the arbitrary constant in the general solution.
+        </p>
+        <p>
+          An initial value problem (IVP) consists of a differential equations together with a given initial value of the dependent variable.
+          <md>
+            y'=f(t,y) \qquad y(t_0)=y_0
+          </md>
+          If we are using the IVP to model a physical situation, we want the solution to make sense. The mathematical issues that need to be addressed are
+          <ul>
+            <li>
+              <p>
+              <alert>Existence :</alert> Does the solution exist?
+              </p>
+            </li>
+            <li>
+              <p>
+                <alert>Uniqueness :</alert> If a solution exists, is it unique?
+              </p>
+            </li>
+            <li>
+              <p>
+                <alert>Interval of existence :</alert> If a unique solution is found. For what values of the independent variable is the solution valid?
+              </p>
+            </li>
+          </ul>
+        </p>
+        <subsection>
+          <title>What can go wrong?</title>
+          <p>
+            <alert>Existence</alert> Just as in the theory of algebraic equations, we are not guaranteed a solution to a given IVP. Sometimes it is clear the a solution cannot exist. For example. consider the IVP
+            <md>
+              y'=4ty\ln(1-2t)\qquad y(1)=3
+            </md>
+            since substituting the initial condition into the right hand side of the equation implies <m>y'(1)</m> is undefined
+          </p>
+          <p>
+            <alert>Uniqueness</alert> Sometimes there is more than one solution to a given IVP. Consider
+            <md>
+              y'=\frac{2(y-1)}{t}\qquad y(0)=1
+            </md>
+            This has solutions of the form
+            <md>
+              y=1+ct^2
+            </md>
+            with <m>c</m> arbitrary.
+          </p>
+          <p>
+            <alert>Interval of existence</alert> For some differential equations the interval of existence will depend on the initial conditions. The IVP
+            <md>
+              ty'+\sqrt{t+4}y^2=\frac{e^t}{(x-3)^2}
+            </md>
+            The differential equation is undefined for <m>t\ln-4,t=0,t=3</m>, so depending on the position of the initial condition the possible intervals of existence are <m>([-4,0),(0,3),(3,\infty)</m>. A subtler problem occurs when the solution of the differential equation has a singularity. As an example the IVP
+            <md>
+              y'=1+y^2 \qquad y(3)=1
+            </md>
+            has the solution
+            <md>
+              y=\tan\left(t-3+\frac{\pi}{4}\right)\qquad \frac{\pi}{2}\leq t\leq \frac{3\pi}{2}
+            </md>
+            since <m>\tan</m> has vertical asymptotes at odd multiple of <m>\pi/2</m>
+          </p>
+        </subsection>
+      </section>
+      <section>
+        <title>An Existence and Uniqueness Theorem</title>
+        <theorem xml:id="thm-">
+          <statement>
+            <p>
+              Given the initial value problem
+              <md>
+                y'=f(t,y)\qquad y(t_0)=y_0
+              </md>
+              <ul>
+                <li>
+                  <p>
+                    If <m>f(t,y)</m> is continuous in the open rectangle <m>a\t t\lt b,c\lt y \lt d</m> then the IVP has a solution in an open interval <m>a\lt \alpha\lt t\lt \beta\lt b</m> about the initial point <m>(t_0,y_0)</m>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    If in addition the partial derivative <m>f_y</m> is also continuous the solution is unique.
+                  </p>
+                </li>
+              </ul>
+              Notes
+              <ul>
+                <li>
+                  <p>
+                    The theorem is a local existence theorem. It only guarantees a solution in a neighborhood of the initial point. It doesn't give any information about the interval of existence.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    The theorem gives sufficient conditions for an solution to exist. There can be solutions to an IVP even if the function <m>f(t,y)</m> isn't continuous.
+                    <md>
+                      y'=2\sqrt{y} \qquad y(0)=0
+                    </md>
+                     has a solution <m>y=t^2</m> even though <m>\sqrt{y}</m> is not continuous at <m>(0,0)</m>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    The theorem is also true if there are more than one dependent variable and all the partial derivatives with respect to the dependent variables are continuous. For example, given the IVP
+                    <md>
+                      x'=f(t,x,y)\quad y'=g(t,x,y)\qquad x(t_0)=x_0\quad y(t_0)=y_0
+                    </md>
+                    then if <m>f</m> and <m>g</m> are continuous at <m>(t_0,x_0,y_0)</m>  then a solution exists. If the partial derivatives <m>f_x,f_y,g_x,g_y</m> are also continuous then the solution is unique.
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </statement>
+        </theorem>
+        <example>
+          <p>
+            Solve the differential equation
+            <md>
+              y'=-3t^2(y-2)^2
+            </md>
+            For the initial conditions
+            <md>
+             (a) \quad <m>y(0)=3</m> \qquad(b) \quad <m>y(0)=1</m> \qquad(c) \quad<m>y(0)=2</m> 
+            </md>
+          </p>
+          
+          <p>
+            Firstly <m>f=3t^2(y-2)^2</m> and <m>f_y=12t^2(y-2)</m> are continuous everywhere so a unique solution exists for any initial condition.
+          </p>
+          <p>  
+            Separating the variables and integrating
+            <md>
+              \int \frac{dy}{(y-2)^2}=-\int 3t^2\,dt\quad\Rightarrow\quad \frac{1}{y-2}=t^3+c
+            </md>
+            <md>
+              y=2+\frac{1}{c+t^3}
+            </md>
+            (a)
+            <md>
+              y(1)=3 =2+frac{1}{c}\quad\Rightarrow\quad c=1\quad y(t)=2+\frac{1}{1+t^3}
+            </md>
+            (b)
+            <md>
+              y(1)=1 =2+frac{1}{c}\quad\Rightarrow\quad c=-1\quad y(t)=2+\frac{1}{t^3-1}
+            </md>
+            (c)
+            <md>
+              y(2)=2 = 2+frac{1}{c}\quad\Rightarrow\quad c=?
+            </md>
+            The problem goes back to separating the variables. If <m>y(0)=2</m> , dividing by <m>y-2</m> is not allowed. We know there is a unique solution from the theorem. Substituting <m>y(t)=2</m> into the differential equation shows that that is a solution. <m>y(t)=2</m> is an example of a singular or equilibrium solution
+          </p>
+        </example>
+        
       </section>
       
       
