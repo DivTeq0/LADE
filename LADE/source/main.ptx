@@ -4,7 +4,7 @@
   <!-- we first include a file which contains the docinfo element: -->
   <xi:include href="./docinfo.ptx" />
 
-  <book xml:id="my-great-book">
+  <book xml:id="LADE">
     <title>Linear Algebra and Differential Equations</title>
     <subtitle></subtitle>
 
@@ -388,6 +388,194 @@
            </p>
         </example>
       </section>
+      
+      
+    </chapter>
+    <chapter>
+      <title>Separable Differential Equations</title>
+      <section xml:id="sec-">
+        <title>Time Only Differential Equations</title>
+        <p>
+          The simplest type of differential equation is one where the derivative of the dependent variable depends only on the independent variable
+          <md>
+            y/=f(t)\qquad y(t_0)=y_0
+          </md>
+          You have been solving these since your first calculus class. Using the fundamental theorem, the solution is
+          <md>
+            y(t)=y_0+\int_{t_0}^tf(s)\,ds
+          </md>
+          These types of equations occur in physics, when the force is a function of time only. Newton's second law takes the form
+          <md>
+            F(t)=ma(t)=mv'(t)=mx''(t)
+          </md>
+          The velocity can be calculated by integration
+          <md>
+            v(t)=v_0+\frac{1}{m}\int_{t_0}^tF(s)\,ds
+          </md>
+          and the displacement can be obtained by another integration
+          <md>
+            x(t)=x_0+\int_{t_0}^tv(s)\,ds
+          </md>
+          <example>
+            <p>
+              A ball is thrown upwards at a speed <m>v_0</m>. Neglecting air resistance, what is the maximum height the ball will reach?
+              <md>
+                a(t)=-g \quad\Rightarrow\quad v(t)=v_0+\int_0^t(-g\,dt)=v_0-gt
+              </md>
+              The displacement is (assuming that <m>x_0=0</m>)
+              <md>
+                x(t)=v_0t-\frac{1}{2}gt^2
+              </md>
+              When the ball is at its maximum height the velocity is 0.
+              <md>
+                0=v_0-gt \quad\Rightarrow\quad t=\frac{v_0}{g}
+              </md>
+              The maximum height will be
+              <md>
+                x\left(\frac{v_0}{g}\right)=v_0\left(\frac{v_0}{g}\right)-\frac{1}{2}g\left(\frac{v_0}{g}\right)^2=\frac{v_0^2}{2g}
+              </md>
+              
+            </p>
+          </example>
+        </p>
+        
+      </section>
+      <section>
+        <title>Separable Equations</title>
+        <p>
+          The next class of differential equations that can be readily solved are the separable ones. They have the form
+          <md>
+            y'=f(t,y)=g(t)h(y)
+          </md>
+          The dependent and independent variables can be separated and each side of the equation can be integrated
+          <md>
+            \frac{dy}{dt}=g(t)h(y)\quad \Rightarrow\quad \int\frac{dy}{h(y)}=\int g(t)\,dt\quad \Rightarrow\quad H(y)=G(t)+c
+          </md>
+          which is an implicit solution of the differential equation.
+        </p>
+        <p>
+          There is also the possibility of equilibrium solutions. If <m>y^\star</m> is a constant solution of <m>h(y^\star)=0</m> then a solution to the differential equation is
+          <md>
+            y(t)=y^\star
+          </md>
+          
+        </p>
+        <example>
+          <p>
+            Find the general solution to the differential equation
+            <md>
+              y'=-2t(y+3)
+            </md>
+            There are no problems with existence or uniqueness and there is an equilibrium solution <m>y(t)=-2</m>. Separating the variables and integrating
+            <md>
+              \int\frac{dy}{y+2}=-\int 2t\,dt\quad\Rightarrow\quad \ln|y+2|=-t^2+c 
+            </md>
+            So the solution is
+            <md>
+               y=-2+c_1e^{-t^2}
+            </md>
+            
+          </p>
+          
+        </example>
+        <example>
+          <p>
+            Solve the initial value problem
+            <md>
+              \frac{dy}{dt}=\frac{y}{t}-\frac{y^3}{t}\qquad y(1)=2
+            </md>
+            There is an equilibrium solution, <m>y=1</m>. This equation is separable
+            <md>
+              \int\frac{dy}{y(1-y)(1+y)}=\int \frac{dt}{t}=\int\left(\frac{a}{y}+\frac{b}{1-y}+\frac{c}1+y\right)\,dy
+            </md>
+            <md>
+              1=a(1-y)(1+y)+by(1+y)+cy(1-y)
+            </md>
+            This gives
+            <md>
+              a=1 \qquad b=\frac{1}{2}\qquad c=-\frac{1}{2}
+            </md>
+            Integrating
+            <md>
+              \ln|y|-\frac{1}{2}\ln|1-y|-\frac{1}{2}\ln|1+y|=\ln|t|+c_1
+            </md>
+            Using the initial condition
+            <md>
+              \ln 2-\frac{1}{2}\ln 3=c_1=\ln\left(\frac{2}{\sqrt{3}}\right)
+            </md>
+            Since the initial condition is <m>y(1)=2</m> then <m>|1-y|=y-1</m>. Combing the logs
+            <md>
+              \ln\left(\frac{y}{\sqrt{y^2-1}}\right)=\ln\left(\frac{2t}{\sqrt{3}}\right)\quad\Rightarrow\quad \frac{y}{\sqrt{y^2-1}}=\frac{2t}{\sqrt{3}}
+            </md>
+            
+          </p>
+        </example>
+      </section>
+      <section >
+        <title>Population Models</title>
+        <subsection>
+          <title>Exponential Growth</title>
+          <p>
+          The simplest population model states that the rate of growth of a population is proportional to the population. The associated differential equation is
+          <md>
+            \frac{dp}{dt}=rp \qquad p(0)=p_0
+          </md>
+           It is separable
+           <md>
+            \int\frac{dp}{p}=\int r\,dt \quad\Rightarrow\quad \ln p=rt+c
+           </md>
+            Using the initial condition gives <m>c=\ln p_0</m>. An the solution is
+            <md>
+              p(t)=p_0e^{rt}=p_0(e^r)^t
+            </md>
+            It isn't a good for long term behavior as the population will become unbounded eventually
+          </p>
+          <example>
+              <p>
+                A bacterial colony is found to have 2000 individuals after 2 hours. After 5 hours the colony has grown to 54000 individuals
+              </p>
+              <p>
+                (a) What was the initial population?
+              </p>
+              
+              <p>
+                (b) At what time will the colony contain a million individuals?
+              </p>
+              <p>
+              
+                <md>
+                  p(2)=2000=p_0e^{2r}\qquad p(5)=5400=p_0e^{5r}
+                </md>
+                Dividing
+                <md>
+                  \frac{54000}{2000}=e^{3r}\quad \Rightarrow \quad e^r=3
+                </md>
+                <md>
+                  p(t)=p_0(3^t)\quad 2000=p_0(3^2)\quad\Rightarrow\quad p_0=\frac{2000}{9}
+                </md>
+                <md>
+                  1000000=\frac{2000}{9}\,3^t\quad\Rightarrow\quad t=\frac{\ln 45000}{\ln 3}\approx7.66 \,\mbox{hours}
+                </md>
+                
+              </p>
+              
+            </example>
+        </subsection>
+        <subsection xml:id="subsec-Logistic">
+          <title>The Logistic equation</title>\
+          <p>
+            A Belgian biologist called Verhulst proposed a modification of exponential growth
+            <md>
+              p-=rp\left(1-\frac{p}{m}\right)
+            </md>
+            where <m>r.m</m> are given constants. The idea is that for small values of <m>p</m> the population grows exponentially. As <m>p</m> increases there is a resistance to growth modeled by the <m>-rp^2/m</m> term. This is an attempt to take into account the struggle for resources as the population increases. 
+
+          </p>
+        </subsection>
+
+        
+      </section>
+        
       
       
     </chapter>
